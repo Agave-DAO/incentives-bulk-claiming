@@ -4,6 +4,9 @@ import ethers from "ethers";
 import dotenv from "dotenv";
 dotenv.config();
 
+dotenv.config()
+
+const provider = new ethers.providers.JsonRpcProvider(process.env.RPC) 
 
 const abi = [
   {
@@ -347,9 +350,15 @@ const address = "0xfa255f5104f129b78f477e9a6d050a02f31a5d86";
 // - Querying Filters
 // - Populating Unsigned Transactions for non-constant methods
 // - Estimating Gas for non-constant (as an anonymous sender)
-// - Static Calling non-constant methods (as anonymous sender)
+// - Static Calling non-constant methods (as anonymous sender)á
 
-const provider = new ethers.providers.JsonRpcProvider(process.env.RPC) 
 
 export const IncentivesContract = new ethers.Contract(address, abi, provider);
 
+/*
+export interface MetaTransactionData {
+    readonly to: string;
+    readonly value: string;
+    readonly data: string;
+    readonly operation?: OperationType;
+}*/
