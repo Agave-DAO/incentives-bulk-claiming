@@ -10,18 +10,24 @@ contract AgaveIncentivesBulkClaimer {
     uint256 MAX_INT =
         0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
 
-    constructor(){
-      admin = 0x6626528DE0c75Ccc7A0d24F2D24b99060f74EdEe;   
-   }
+    constructor() {
+        admin = 0x6626528DE0c75Ccc7A0d24F2D24b99060f74EdEe;
+    }
 
     function bulkSetClaimer(address[] calldata users) public {
         require(msg.sender == admin, "Only admin can use this contract.");
-        uint j = 0;
+        uint256 j = 0;
+        address bulkClaimer = address(this);
         for (j; j < users.length; j++) {
-            (bool success, bytes memory result) = incentivesContract.delegatecall(abi.encodeWithSignature("setClaimer(address,address)", users[j], admin));
+            (bool success,) = incentivesContract.call(
+                abi.encodeWithSignature(
+                    "setClaimer(address,address)",
+                    users[j],
+                    bulkClaimer
+                )
+            );
         }
     }
-
 
     function bulkClaimRewardsOnBehalf(
         address[] calldata assets,
@@ -30,7 +36,15 @@ contract AgaveIncentivesBulkClaimer {
         require(msg.sender == admin, "Only admin can use this contract.");
 
         for (uint256 j = 0; j < users.length; j++) {
-            (bool success, bytes memory result) = incentivesContract.delegatecall(abi.encodeWithSignature("claimRewardsOnBehalf(address[],uint256,address,address)", assets, MAX_INT, users[j], users[j]));
+            (bool success,) = incentivesContract.call(
+                abi.encodeWithSignature(
+                    "claimRewardsOnBehalf(address[],uint256,address,address)",
+                    assets,
+                    MAX_INT,
+                    users[j],
+                    users[j]
+                )
+            );
         }
     }
 }
