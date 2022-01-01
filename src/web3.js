@@ -1,6 +1,8 @@
-
 import ethers from "ethers";
-require('dotenv').config();;
+
+// config.js
+import dotenv from "dotenv";
+dotenv.config();
 
 
 const abi = [

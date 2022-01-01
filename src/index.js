@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import { IncentivesContract} from './web3.js';
-import BigNumber from 'ethers'
 
 const GRAPHQL_URL =
   "https://api.thegraph.com/subgraphs/name/agave-dao/agave-xdai";
@@ -15,7 +14,7 @@ function sleep(delay) {
 
 async function looper() {
   let skipN = 0;
-  for (skipN; skipN < 799; skipN = skipN + 100) {
+  for (skipN; skipN < 1200; skipN = skipN + 100) {
     const newUsers = await fetchAllUsers(skipN);
     users = users.concat(newUsers);
   }
@@ -23,7 +22,7 @@ async function looper() {
   await getUnclaimedUsers(users)
   fs.writeFile(
     "users.txt",
-    JSON.stringify(JSON.stringify(unclaimedUsers)),
+    JSON.stringify(unclaimedUsers)+ "\n"+ JSON.stringify(unclaimedAmounts),
     {
       encoding: "utf8",
       flag: "w",
@@ -57,18 +56,19 @@ async function fetchAllUsers(skipN) {
       query: querySchema,
     }),
   });
-
+  
   const responseBody = await response.json();
   return responseBody.data.users;
 }
 
 let unclaimedUsers = [];
+let unclaimedAmounts = [];
 
 async function getUnclaimedUsers(users){
     const finished = await recursiveWeb3Query(users,0)
     if (finished) {
-        console.log(unclaimedUsers.length)
-        return unclaimedUsers
+        console.log(unclaimedUsers.length, unclaimedAmounts.length)
+        return [unclaimedUsers, unclaimedAmounts]
     }
 }
 
@@ -77,10 +77,11 @@ async function recursiveWeb3Query(users, i){
     let result = await IncentivesContract.getUserUnclaimedRewards(user)
     if (!result.isZero()) {
         console.log(i,' <> ',user,result.toString())
-        unclaimedUsers.push({"user": user, "amount":result.toString()})
+        unclaimedUsers.push(user)
+        unclaimedAmounts.push(result.toString())
     }
     if(users.length - 1 === i) return unclaimedUsers
-    sleep(500)
+    //sleep(500)
     await recursiveWeb3Query(users,i+1)
     
 }
