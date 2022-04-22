@@ -6,6 +6,7 @@ const GRAPHQL_URL =
   "https://api.thegraph.com/subgraphs/name/agave-dao/agave-xdai";
 
 let users = [];
+let maxUsers = 3000;
 
 function sleep(delay) {
     var start = new Date().getTime();
@@ -14,7 +15,7 @@ function sleep(delay) {
 
 async function looper() {
   let skipN = 0;
-  for (skipN; skipN < 1200; skipN = skipN + 100) {
+  for (skipN; skipN < maxUsers; skipN = skipN + 100) {
     const newUsers = await fetchAllUsers(skipN);
     users = users.concat(newUsers);
   }
@@ -74,7 +75,7 @@ async function getUnclaimedUsers(users){
 
 async function recursiveWeb3Query(users, i){
     let user = users[i].id
-    let assets =["0x2eCd3E49C65b30cF6353B928a1D18DF5951AAa3E","0x95a21fCbb57ed54D3a5a706068b06cEE8637998a","0xb5A165d9177555418796638447396377Edf4C18a","0x3B8f9Bb5AD6E699943C7e0089FbC0735b2a4f18E","0xf7a28097fDf8c323Da826A9D98617a266A73c0Ef","0x1432672eaE70B126f9d1967860409Ea04ED238F2","0x34B8d5Bb7ED171aB5CEf266030B8181304344C51","0x8be80b0B794A45d4832784C9b63352eaff2096BB","0x5901102402A4C25c10308e8C7aADd780fD94bf42","0xa9Ddaa3F02188977329F676F7ae2E00463a026aa","0xfE31f6FF4366D2E17904e474605C2c6C42323380","0xADc675C94DD7AF3b08baC0fa7A8F42e3dc3739E8"];
+    let assets =["0x291B5957c9CBe9Ca6f0b98281594b4eB495F4ec1","0xa728C8f1CF7fC4d8c6d5195945C3760c87532724","0xd4e420bBf00b0F409188b338c5D87Df761d6C894","0xec72De30C3084023F7908002A2252a606CCe0B2c","0xa286Ce70FB3a6269676c8d99BD9860DE212252Ef","0x5b0568531322759EAB69269a86448b39B47e2AE8","0xA26783eAd6C1f4744685c14079950622674ae8A8","0x99272C6E2Baa601cEA8212b8fBAA7920A9f916F0","0x4863cfaF3392F20531aa72CE19E5783f489817d6","0x110C5A1494F0AB6C851abB72AA2efa3dA738aB72","0x44932e3b1E662AdDE2F7bac6D5081C5adab908c6","0x73Ada33D706085d6B93350B5e6aED6178905Fb8A","0xA916A4891D80494c6cB0B49b11FD68238AAaF617","0x7388cbdeb284902E1e07be616F92Adb3660Ed3a4"]
     let result = await IncentivesContract.getRewardsBalance(assets, user)
     if (!result.isZero()) {
         console.log(i,' <> ',user,result.toString())
