@@ -1,0 +1,904 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "assets",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address[]",
+          "name": "users",
+          "type": "address[]"
+        }
+      ],
+      "name": "bulkClaimRewardsOnBehalf",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "incentivesContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x6080604052600080546001600160a01b03191673fa255f5104f129b78f477e9a6d050a02f31a5d8617905560001960015534801561003c57600080fd5b5061048f8061004c6000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80635b3ff9201461003b578063adb1859d14610050575b600080fd5b61004e610049366004610261565b610099565b005b6000546100709073ffffffffffffffffffffffffffffffffffffffff1681565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b60005b8181101561020e576000805460015473ffffffffffffffffffffffffffffffffffffffff90911690879087908787878181106100da576100da6102cd565b90506020020160208101906100ef9190610325565b888888818110610101576101016102cd565b90506020020160208101906101169190610325565b60405160240161012a959493929190610347565b604080517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe08184030181529181526020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f5785cb8400000000000000000000000000000000000000000000000000000000179052516101ab91906103cb565b6000604051808303816000865af19150503d80600081146101e8576040519150601f19603f3d011682016040523d82523d6000602084013e6101ed565b606091505b50509050806101fb57600080fd5b5080610206816103fa565b91505061009c565b5050505050565b60008083601f84011261022757600080fd5b50813567ffffffffffffffff81111561023f57600080fd5b6020830191508360208260051b850101111561025a57600080fd5b9250929050565b6000806000806040858703121561027757600080fd5b843567ffffffffffffffff8082111561028f57600080fd5b61029b88838901610215565b909650945060208701359150808211156102b457600080fd5b506102c187828801610215565b95989497509550505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b803573ffffffffffffffffffffffffffffffffffffffff8116811461032057600080fd5b919050565b60006020828403121561033757600080fd5b610340826102fc565b9392505050565b6080808252810185905260008660a08301825b888110156103955773ffffffffffffffffffffffffffffffffffffffff610380846102fc565b1682526020928301929091019060010161035a565b506020840196909652505073ffffffffffffffffffffffffffffffffffffffff9283166040820152911660609091015292915050565b6000825160005b818110156103ec57602081860181015185830152016103d2565b506000920191825250919050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203610452577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b506001019056fea264697066735822122016eb01b9257a53d17555145d654d0200bb63e20b7b7a8df34619730795b0dd6264736f6c63430008130033",
+    "sourceMap": "70:803:0:-:0;;;112:86;;;-1:-1:-1;;;;;;112:86:0;156:42;112:86;;;-1:-1:-1;;112:86:0;205:92;304:16;;;;;;;;;;70:803;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80635b3ff9201461003b578063adb1859d14610050575b600080fd5b61004e610049366004610261565b610099565b005b6000546100709073ffffffffffffffffffffffffffffffffffffffff1681565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b60005b8181101561020e576000805460015473ffffffffffffffffffffffffffffffffffffffff90911690879087908787878181106100da576100da6102cd565b90506020020160208101906100ef9190610325565b888888818110610101576101016102cd565b90506020020160208101906101169190610325565b60405160240161012a959493929190610347565b604080517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe08184030181529181526020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f5785cb8400000000000000000000000000000000000000000000000000000000179052516101ab91906103cb565b6000604051808303816000865af19150503d80600081146101e8576040519150601f19603f3d011682016040523d82523d6000602084013e6101ed565b606091505b50509050806101fb57600080fd5b5080610206816103fa565b91505061009c565b5050505050565b60008083601f84011261022757600080fd5b50813567ffffffffffffffff81111561023f57600080fd5b6020830191508360208260051b850101111561025a57600080fd5b9250929050565b6000806000806040858703121561027757600080fd5b843567ffffffffffffffff8082111561028f57600080fd5b61029b88838901610215565b909650945060208701359150808211156102b457600080fd5b506102c187828801610215565b95989497509550505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b803573ffffffffffffffffffffffffffffffffffffffff8116811461032057600080fd5b919050565b60006020828403121561033757600080fd5b610340826102fc565b9392505050565b6080808252810185905260008660a08301825b888110156103955773ffffffffffffffffffffffffffffffffffffffff610380846102fc565b1682526020928301929091019060010161035a565b506020840196909652505073ffffffffffffffffffffffffffffffffffffffff9283166040820152911660609091015292915050565b6000825160005b818110156103ec57602081860181015185830152016103d2565b506000920191825250919050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203610452577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b506001019056fea264697066735822122016eb01b9257a53d17555145d654d0200bb63e20b7b7a8df34619730795b0dd6264736f6c63430008130033",
+    "sourceMap": "70:803:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;326:545;;;;;;:::i;:::-;;:::i;:::-;;112:86;;;;;;;;;;;;1340:42:1;1328:55;;;1310:74;;1298:2;1283:18;112:86:0;;;;;;;326:545;458:9;453:412;473:16;;;453:412;;;511:12;528:18;;;725:7;528:18;;;;;697:6;;;;754:5;;760:1;754:8;;;;;;;:::i;:::-;;;;;;;;;;;;;;:::i;:::-;784:5;;790:1;784:8;;;;;;;:::i;:::-;;;;;;;;;;;;;;:::i;:::-;569:241;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;528:296;;;569:241;528:296;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;510:314;;;846:7;838:16;;;;;;-1:-1:-1;491:3:0;;;;:::i;:::-;;;;453:412;;;;326:545;;;;:::o;14:367:1:-;77:8;87:6;141:3;134:4;126:6;122:17;118:27;108:55;;159:1;156;149:12;108:55;-1:-1:-1;182:20:1;;225:18;214:30;;211:50;;;257:1;254;247:12;211:50;294:4;286:6;282:17;270:29;;354:3;347:4;337:6;334:1;330:14;322:6;318:27;314:38;311:47;308:67;;;371:1;368;361:12;308:67;14:367;;;;;:::o;386:773::-;508:6;516;524;532;585:2;573:9;564:7;560:23;556:32;553:52;;;601:1;598;591:12;553:52;641:9;628:23;670:18;711:2;703:6;700:14;697:34;;;727:1;724;717:12;697:34;766:70;828:7;819:6;808:9;804:22;766:70;:::i;:::-;855:8;;-1:-1:-1;740:96:1;-1:-1:-1;943:2:1;928:18;;915:32;;-1:-1:-1;959:16:1;;;956:36;;;988:1;985;978:12;956:36;;1027:72;1091:7;1080:8;1069:9;1065:24;1027:72;:::i;:::-;386:773;;;;-1:-1:-1;1118:8:1;-1:-1:-1;;;;386:773:1:o;1395:184::-;1447:77;1444:1;1437:88;1544:4;1541:1;1534:15;1568:4;1565:1;1558:15;1584:196;1652:20;;1712:42;1701:54;;1691:65;;1681:93;;1770:1;1767;1760:12;1681:93;1584:196;;;:::o;1785:186::-;1844:6;1897:2;1885:9;1876:7;1872:23;1868:32;1865:52;;;1913:1;1910;1903:12;1865:52;1936:29;1955:9;1936:29;:::i;:::-;1926:39;1785:186;-1:-1:-1;;;1785:186:1:o;1976:962::-;2260:3;2273:22;;;2245:19;;2330:22;;;2212:4;2410:6;2383:3;2368:19;;2212:4;2444:258;2458:6;2455:1;2452:13;2444:258;;;2551:42;2523:26;2542:6;2523:26;:::i;:::-;2519:75;2507:88;;2618:4;2677:15;;;;2642:12;;;;2480:1;2473:9;2444:258;;;-1:-1:-1;2753:4:1;2738:20;;2731:36;;;;-1:-1:-1;;2786:42:1;2864:15;;;2859:2;2844:18;;2837:43;2916:15;;2911:2;2896:18;;;2889:43;2719:3;1976:962;-1:-1:-1;;1976:962:1:o;2943:412::-;3072:3;3110:6;3104:13;3135:1;3145:129;3159:6;3156:1;3153:13;3145:129;;;3257:4;3241:14;;;3237:25;;3231:32;3218:11;;;3211:53;3174:12;3145:129;;;-1:-1:-1;3329:1:1;3293:16;;3318:13;;;-1:-1:-1;3293:16:1;2943:412;-1:-1:-1;2943:412:1:o;3360:349::-;3399:3;3430:66;3423:5;3420:77;3417:257;;3530:77;3527:1;3520:88;3631:4;3628:1;3621:15;3659:4;3656:1;3649:15;3417:257;-1:-1:-1;3701:1:1;3690:13;;3360:349::o",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "bulkClaimRewardsOnBehalf(address[],address[])": "5b3ff920",
+    "incentivesContract()": "adb1859d"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"assets\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"users\",\"type\":\"address[]\"}],\"name\":\"bulkClaimRewardsOnBehalf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"incentivesContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contract/AgaveIncentivesBulkClaimer.sol\":\"AgaveIncentivesBulkClaimer\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"contract/AgaveIncentivesBulkClaimer.sol\":{\"keccak256\":\"0xa936b00086d7f30cd9d9d96ee1412e4891c626c8604dede0dc6de1aed579b448\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://b7c05798dcaf4b25e0647ca4ae02237bb30ce618a8adb62e850686b1e0df8840\",\"dweb:/ipfs/QmZ42FZyw1svBMMvwFoXRSVCGEYYMyoC6nZhyiAPgkSuTX\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address[]",
+              "name": "assets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "users",
+              "type": "address[]"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "bulkClaimRewardsOnBehalf"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "incentivesContract",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [],
+      "optimizer": {
+        "enabled": true,
+        "runs": 10000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contract/AgaveIncentivesBulkClaimer.sol": "AgaveIncentivesBulkClaimer"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contract/AgaveIncentivesBulkClaimer.sol": {
+        "keccak256": "0xa936b00086d7f30cd9d9d96ee1412e4891c626c8604dede0dc6de1aed579b448",
+        "urls": [
+          "bzz-raw://b7c05798dcaf4b25e0647ca4ae02237bb30ce618a8adb62e850686b1e0df8840",
+          "dweb:/ipfs/QmZ42FZyw1svBMMvwFoXRSVCGEYYMyoC6nZhyiAPgkSuTX"
+        ],
+        "license": "GPL-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contract/AgaveIncentivesBulkClaimer.sol",
+    "id": 58,
+    "exportedSymbols": {
+      "AgaveIncentivesBulkClaimer": [
+        57
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:837:0",
+    "nodes": [
+      {
+        "id": 1,
+        "nodeType": "PragmaDirective",
+        "src": "37:31:0",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ]
+      },
+      {
+        "id": 57,
+        "nodeType": "ContractDefinition",
+        "src": "70:803:0",
+        "nodes": [
+          {
+            "id": 4,
+            "nodeType": "VariableDeclaration",
+            "src": "112:86:0",
+            "nodes": [],
+            "constant": false,
+            "functionSelector": "adb1859d",
+            "mutability": "mutable",
+            "name": "incentivesContract",
+            "nameLocation": "127:18:0",
+            "scope": 57,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "112:7:0",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": {
+              "hexValue": "307866613235356635313034663132394237386634373765396136443035306130326633314135443836",
+              "id": 3,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "156:42:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              },
+              "value": "0xfa255f5104f129B78f477e9a6D050a02f31A5D86"
+            },
+            "visibility": "public"
+          },
+          {
+            "id": 7,
+            "nodeType": "VariableDeclaration",
+            "src": "205:92:0",
+            "nodes": [],
+            "constant": false,
+            "mutability": "mutable",
+            "name": "MAX_INT",
+            "nameLocation": "213:7:0",
+            "scope": 57,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 5,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "205:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "307866666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666",
+              "id": 6,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "231:66:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_115792089237316195423570985008687907853269984665640564039457584007913129639935_by_1",
+                "typeString": "int_const 1157...(70 digits omitted)...9935"
+              },
+              "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 11,
+            "nodeType": "FunctionDefinition",
+            "src": "304:16:0",
+            "nodes": [],
+            "body": {
+              "id": 10,
+              "nodeType": "Block",
+              "src": "318:2:0",
+              "nodes": [],
+              "statements": []
+            },
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "parameters": {
+              "id": 8,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "315:2:0"
+            },
+            "returnParameters": {
+              "id": 9,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "318:0:0"
+            },
+            "scope": 57,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "id": 56,
+            "nodeType": "FunctionDefinition",
+            "src": "326:545:0",
+            "nodes": [],
+            "body": {
+              "id": 55,
+              "nodeType": "Block",
+              "src": "442:429:0",
+              "nodes": [],
+              "statements": [
+                {
+                  "body": {
+                    "id": 53,
+                    "nodeType": "Block",
+                    "src": "496:369:0",
+                    "statements": [
+                      {
+                        "assignments": [
+                          32,
+                          null
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 32,
+                            "mutability": "mutable",
+                            "name": "success",
+                            "nameLocation": "516:7:0",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 53,
+                            "src": "511:12:0",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "typeName": {
+                              "id": 31,
+                              "name": "bool",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "511:4:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            "visibility": "internal"
+                          },
+                          null
+                        ],
+                        "id": 48,
+                        "initialValue": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "hexValue": "62756c6b436c61696d526577617264734f6e426568616c6628616464726573735b5d2c75696e743235362c616464726573732c6164647265737329",
+                                  "id": 37,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "string",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "614:61:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_stringliteral_5785cb843e2df2dbce59822e89249fff0b2d7bcb426c599c015eea0fb0123e5e",
+                                    "typeString": "literal_string \"bulkClaimRewardsOnBehalf(address[],uint256,address,address)\""
+                                  },
+                                  "value": "bulkClaimRewardsOnBehalf(address[],uint256,address,address)"
+                                },
+                                {
+                                  "id": 38,
+                                  "name": "assets",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 14,
+                                  "src": "697:6:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                                    "typeString": "address[] calldata"
+                                  }
+                                },
+                                {
+                                  "id": 39,
+                                  "name": "MAX_INT",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 7,
+                                  "src": "725:7:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                {
+                                  "baseExpression": {
+                                    "id": 40,
+                                    "name": "users",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 17,
+                                    "src": "754:5:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                                      "typeString": "address[] calldata"
+                                    }
+                                  },
+                                  "id": 42,
+                                  "indexExpression": {
+                                    "id": 41,
+                                    "name": "j",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 21,
+                                    "src": "760:1:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "754:8:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                {
+                                  "baseExpression": {
+                                    "id": 43,
+                                    "name": "users",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 17,
+                                    "src": "784:5:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                                      "typeString": "address[] calldata"
+                                    }
+                                  },
+                                  "id": 45,
+                                  "indexExpression": {
+                                    "id": 44,
+                                    "name": "j",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 21,
+                                    "src": "790:1:0",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "784:8:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_stringliteral_5785cb843e2df2dbce59822e89249fff0b2d7bcb426c599c015eea0fb0123e5e",
+                                    "typeString": "literal_string \"bulkClaimRewardsOnBehalf(address[],uint256,address,address)\""
+                                  },
+                                  {
+                                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                                    "typeString": "address[] calldata"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "expression": {
+                                  "id": 35,
+                                  "name": "abi",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": -1,
+                                  "src": "569:3:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_abi",
+                                    "typeString": "abi"
+                                  }
+                                },
+                                "id": 36,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "memberLocation": "573:19:0",
+                                "memberName": "encodeWithSignature",
+                                "nodeType": "MemberAccess",
+                                "src": "569:23:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_abiencodewithsignature_pure$_t_string_memory_ptr_$returns$_t_bytes_memory_ptr_$",
+                                  "typeString": "function (string memory) pure returns (bytes memory)"
+                                }
+                              },
+                              "id": 46,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "nameLocations": [],
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "569:241:0",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes_memory_ptr",
+                                "typeString": "bytes memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bytes_memory_ptr",
+                                "typeString": "bytes memory"
+                              }
+                            ],
+                            "expression": {
+                              "id": 33,
+                              "name": "incentivesContract",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4,
+                              "src": "528:18:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "id": 34,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "547:4:0",
+                            "memberName": "call",
+                            "nodeType": "MemberAccess",
+                            "src": "528:23:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$",
+                              "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
+                            }
+                          },
+                          "id": 47,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "528:296:0",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$_t_bool_$_t_bytes_memory_ptr_$",
+                            "typeString": "tuple(bool,bytes memory)"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "510:314:0"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "id": 50,
+                              "name": "success",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 32,
+                              "src": "846:7:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            ],
+                            "id": 49,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              -18,
+                              -18
+                            ],
+                            "referencedDeclaration": -18,
+                            "src": "838:7:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                              "typeString": "function (bool) pure"
+                            }
+                          },
+                          "id": 51,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "838:16:0",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 52,
+                        "nodeType": "ExpressionStatement",
+                        "src": "838:16:0"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 27,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 24,
+                      "name": "j",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 21,
+                      "src": "473:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 25,
+                        "name": "users",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 17,
+                        "src": "477:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                          "typeString": "address[] calldata"
+                        }
+                      },
+                      "id": 26,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "483:6:0",
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "477:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "473:16:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 54,
+                  "initializationExpression": {
+                    "assignments": [
+                      21
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 21,
+                        "mutability": "mutable",
+                        "name": "j",
+                        "nameLocation": "466:1:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 54,
+                        "src": "458:9:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 20,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "458:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 23,
+                    "initialValue": {
+                      "hexValue": "30",
+                      "id": 22,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "470:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "458:13:0"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "id": 29,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "491:3:0",
+                      "subExpression": {
+                        "id": 28,
+                        "name": "j",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "491:1:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 30,
+                    "nodeType": "ExpressionStatement",
+                    "src": "491:3:0"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "453:412:0"
+                }
+              ]
+            },
+            "functionSelector": "5b3ff920",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bulkClaimRewardsOnBehalf",
+            "nameLocation": "335:24:0",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "mutability": "mutable",
+                  "name": "assets",
+                  "nameLocation": "388:6:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56,
+                  "src": "369:25:0",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 12,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "369:7:0",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 13,
+                    "nodeType": "ArrayTypeName",
+                    "src": "369:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17,
+                  "mutability": "mutable",
+                  "name": "users",
+                  "nameLocation": "423:5:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56,
+                  "src": "404:24:0",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 15,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "404:7:0",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 16,
+                    "nodeType": "ArrayTypeName",
+                    "src": "404:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "359:75:0"
+            },
+            "returnParameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "442:0:0"
+            },
+            "scope": 57,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "AgaveIncentivesBulkClaimer",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          57
+        ],
+        "name": "AgaveIncentivesBulkClaimer",
+        "nameLocation": "79:26:0",
+        "scope": 58,
+        "usedErrors": []
+      }
+    ],
+    "license": "GPL-3.0"
+  },
+  "id": 0
+}
