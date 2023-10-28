@@ -1,0 +1,17 @@
+[profile.default]
+src = "src"
+out = "out"
+test = "test"
+libs = ["lib"]
+optimizer = true
+optimizer-runs = 5_000
+
+
+[rpc_endpoints]
+mainnet = "${RPC_MAINNET}"
+gnosis = "${RPC_GNOSIS}"
+goerli = "${RPC_GOERLI}"
+chiado = "${RPC_CHIADO}"
+
+[fuzz]
+runs=2500
