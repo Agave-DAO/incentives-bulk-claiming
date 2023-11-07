@@ -5,6 +5,7 @@ test = "test"
 libs = ["lib"]
 optimizer = true
 optimizer-runs = 5_000
+fs_permissions =  [{ access = "read", path = "./"}]
 
 
 [rpc_endpoints]
