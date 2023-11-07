@@ -1,6 +1,5 @@
 import fs from "fs";
-import { IncentivesContract} from './web3.js';
-import ethers from "ethers";
+import { IncentivesContract } from "./web3.js";
 import fetch from "node-fetch";
 
 const GRAPHQL_URL =
@@ -10,8 +9,8 @@ let users = [];
 let maxUsers = 3000;
 
 function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
+  var start = new Date().getTime();
+  while (new Date().getTime() < start + delay);
 }
 
 async function looper() {
@@ -21,10 +20,10 @@ async function looper() {
     users = users.concat(newUsers);
   }
   console.log(users.length);
-  await getUnclaimedUsers(users)
+  await getUnclaimedUsers(users);
   fs.writeFile(
     "users.txt",
-    JSON.stringify(unclaimedUsers)+ "\n"+ JSON.stringify(unclaimedAmounts),
+    JSON.stringify(unclaimedUsers) + "\n" + JSON.stringify(unclaimedAmounts),
     {
       encoding: "utf8",
       flag: "w",
@@ -58,7 +57,6 @@ async function fetchAllUsers(skipN) {
       query: querySchema,
     }),
   });
-  console.log("fetched users: " +skipN);
   const responseBody = await response.json();
   return responseBody.data.users;
 }
@@ -66,33 +64,45 @@ async function fetchAllUsers(skipN) {
 let unclaimedUsers = [];
 let unclaimedAmounts = [];
 
-async function getUnclaimedUsers(users){
-    const finished = await recursiveWeb3Query(users,0)
-    if (finished) {
-        console.log(unclaimedUsers.length, unclaimedAmounts.length)
-        return [unclaimedUsers, unclaimedAmounts]
-    }
+async function getUnclaimedUsers(users) {
+  const finished = await recursiveWeb3Query(users, 0);
+  if (finished) {
+    console.log(unclaimedUsers.length, unclaimedAmounts.length);
+    return [unclaimedUsers, unclaimedAmounts];
+  }
 }
 
-async function recursiveWeb3Query(users, i){
-    let user = ethers.utils.getAddress(users[i].id)
-    let assets =["0x291B5957c9CBe9Ca6f0b98281594b4eB495F4ec1","0xa728C8f1CF7fC4d8c6d5195945C3760c87532724","0xd4e420bBf00b0F409188b338c5D87Df761d6C894","0xec72De30C3084023F7908002A2252a606CCe0B2c","0xa286Ce70FB3a6269676c8d99BD9860DE212252Ef","0x5b0568531322759EAB69269a86448b39B47e2AE8","0xA26783eAd6C1f4744685c14079950622674ae8A8","0x99272C6E2Baa601cEA8212b8fBAA7920A9f916F0","0x4863cfaF3392F20531aa72CE19E5783f489817d6","0x110C5A1494F0AB6C851abB72AA2efa3dA738aB72","0x44932e3b1E662AdDE2F7bac6D5081C5adab908c6","0x73Ada33D706085d6B93350B5e6aED6178905Fb8A","0x5b4Ef67c63d091083EC4d30CFc4ac685ef051046","0x474f83d77150bDDC6a6F34eEe4F5574EAfD05938","0xA916A4891D80494c6cB0B49b11FD68238AAaF617","0x7388cbdeb284902E1e07be616F92Adb3660Ed3a4"]
-    let result = await IncentivesContract.getRewardsBalance(assets, user)
-    if (!result.isZero()) {
-        console.log(i,' <> ',user,result.toString())
-        unclaimedUsers.push(user)
-        unclaimedAmounts.push(result.toString())
-    }
-    if(users.length - 1 === i) return unclaimedUsers
-    //sleep(500)
-    await recursiveWeb3Query(users,i+1)
-    
+async function recursiveWeb3Query(users, i) {
+  let user = users[i].id;
+  let assets = [
+    "0x291b5957c9cbe9ca6f0b98281594b4eb495f4ec1",
+    "0xa728c8f1cf7fc4d8c6d5195945c3760c87532724",
+    "0xd4e420bbf00b0f409188b338c5d87df761d6c894",
+    "0xec72de30c3084023f7908002a2252a606cce0b2c",
+    "0xa286ce70fb3a6269676c8d99bd9860de212252ef",
+    "0x5b0568531322759eab69269a86448b39b47e2ae8",
+    "0xa26783ead6c1f4744685c14079950622674ae8a8",
+    "0x99272c6e2baa601cea8212b8fbaa7920a9f916f0",
+    "0x4863cfaf3392f20531aa72ce19e5783f489817d6",
+    "0x110c5a1494f0ab6c851abb72aa2efa3da738ab72",
+    "0x44932e3b1e662adde2f7bac6d5081c5adab908c6",
+    "0x73ada33d706085d6b93350b5e6aed6178905fb8a",
+    "0xa916a4891d80494c6cb0b49b11fd68238aaaf617",
+    "0x7388cbdeb284902e1e07be616f92adb3660ed3a4",
+  ];
+  let result = await IncentivesContract.getRewardsBalance(assets, user);
+  if (!result.isZero()) {
+    console.log(i, " <> ", user, result.toString());
+    unclaimedUsers.push(user);
+    unclaimedAmounts.push(result.toString());
+  }
+  if (users.length - 1 === i) return unclaimedUsers;
+  //sleep(500)
+  await recursiveWeb3Query(users, i + 1);
 }
 
 try {
-    looper();
+  looper();
 } catch (err) {
   console.log(err);
 }
-
-

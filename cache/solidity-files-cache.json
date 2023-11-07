@@ -574,9 +574,49 @@
         }
       }
     },
+    "lib/solmate/src/tokens/ERC20.sol": {
+      "lastModificationDate": 1683755754724,
+      "contentHash": "0c7c7ada139062536af09d69d96d395c",
+      "sourceName": "lib/solmate/src/tokens/ERC20.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ERC20": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "ERC20.sol/ERC20.json"
+        }
+      }
+    },
     "script/AgaveIncentivesBulkClaimer.s.sol": {
-      "lastModificationDate": 1683755344791,
-      "contentHash": "657b357a38ffbaa7f42d1808da8dcf70",
+      "lastModificationDate": 1683758520765,
+      "contentHash": "8bb6ab9583bb3d5c0236298629d926db",
       "sourceName": "script/AgaveIncentivesBulkClaimer.s.sol",
       "solcConfig": {
         "settings": {
@@ -619,7 +659,8 @@
         "lib/forge-std/src/Vm.sol",
         "lib/forge-std/src/console.sol",
         "lib/forge-std/src/console2.sol",
-        "lib/forge-std/src/interfaces/IMulticall3.sol"
+        "lib/forge-std/src/interfaces/IMulticall3.sol",
+        "lib/solmate/src/tokens/ERC20.sol"
       ],
       "versionRequirement": "^0.8.13",
       "artifacts": {
