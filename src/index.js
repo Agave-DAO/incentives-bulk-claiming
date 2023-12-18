@@ -1,12 +1,12 @@
 import fs from "fs";
-import { IncentivesContract } from "./web3.js";
+import { getRewardsBalance, getRewardsBalanceBatched } from "./web3.js";
 import fetch from "node-fetch";
+import { fetchAllUsers } from "./subgraph-queries.js";
 
 const GRAPHQL_URL =
   "https://api.thegraph.com/subgraphs/name/agave-dao/agave-xdai";
 
 let users = [];
-let maxUsers = 3000;
 
 function sleep(delay) {
   var start = new Date().getTime();
@@ -14,13 +14,8 @@ function sleep(delay) {
 }
 
 async function looper() {
-  let skipN = 0;
-  for (skipN; skipN < maxUsers; skipN = skipN + 100) {
-    const newUsers = await fetchAllUsers(skipN);
-    users = users.concat(newUsers);
-  }
-  console.log(users.length);
-  await getUnclaimedUsers(users);
+  users = await fetchAllUsers();
+  const [unclaimedUsers, unclaimedAmounts] = await getUnclaimedUsers(users);
   fs.writeFile(
     "users.txt",
     JSON.stringify(unclaimedUsers) + "\n" + JSON.stringify(unclaimedAmounts),
@@ -39,66 +34,55 @@ async function looper() {
   );
 }
 
-async function fetchAllUsers(skipN) {
-  // Construct a schema, using GraphQL schema language
-  const querySchema = `
-{
-    users(orderBy:id ,skip:${skipN}) {
-      id
-    }
-  } 
-`;
-  const response = await fetch(GRAPHQL_URL, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      query: querySchema,
-    }),
-  });
-  const responseBody = await response.json();
-  return responseBody.data.users;
-}
-
-let unclaimedUsers = [];
-let unclaimedAmounts = [];
-
 async function getUnclaimedUsers(users) {
-  const finished = await recursiveWeb3Query(users, 0);
-  if (finished) {
-    console.log(unclaimedUsers.length, unclaimedAmounts.length);
-    return [unclaimedUsers, unclaimedAmounts];
-  }
+  const [unclaimedUsers, unclaimedAmounts] = await getUsersWithRewards(users);
+  return [unclaimedUsers, unclaimedAmounts];
 }
 
-async function recursiveWeb3Query(users, i) {
-  let user = users[i].id;
+async function getUsersWithRewards(users) {
   let assets = [
-    "0x291b5957c9cbe9ca6f0b98281594b4eb495f4ec1",
-    "0xa728c8f1cf7fc4d8c6d5195945c3760c87532724",
-    "0xd4e420bbf00b0f409188b338c5d87df761d6c894",
-    "0xec72de30c3084023f7908002a2252a606cce0b2c",
-    "0xa286ce70fb3a6269676c8d99bd9860de212252ef",
-    "0x5b0568531322759eab69269a86448b39b47e2ae8",
-    "0xa26783ead6c1f4744685c14079950622674ae8a8",
-    "0x99272c6e2baa601cea8212b8fbaa7920a9f916f0",
-    "0x4863cfaf3392f20531aa72ce19e5783f489817d6",
-    "0x110c5a1494f0ab6c851abb72aa2efa3da738ab72",
-    "0x44932e3b1e662adde2f7bac6d5081c5adab908c6",
-    "0x73ada33d706085d6b93350b5e6aed6178905fb8a",
-    "0xa916a4891d80494c6cb0b49b11fd68238aaaf617",
-    "0x7388cbdeb284902e1e07be616f92adb3660ed3a4",
+    "0x291B5957c9CBe9Ca6f0b98281594b4eB495F4ec1",
+    "0xa728C8f1CF7fC4d8c6d5195945C3760c87532724",
+    "0xd4e420bBf00b0F409188b338c5D87Df761d6C894",
+    "0xec72De30C3084023F7908002A2252a606CCe0B2c",
+    "0xA26783eAd6C1f4744685c14079950622674ae8A8",
+    "0x99272C6E2Baa601cEA8212b8fBAA7920A9f916F0",
+    "0x4863cfaF3392F20531aa72CE19E5783f489817d6",
+    "0x110C5A1494F0AB6C851abB72AA2efa3dA738aB72",
+    "0x44932e3b1E662AdDE2F7bac6D5081C5adab908c6",
+    "0x73Ada33D706085d6B93350B5e6aED6178905Fb8A",
+    "0x5b4Ef67c63d091083EC4d30CFc4ac685ef051046",
+    "0x474f83d77150bDDC6a6F34eEe4F5574EAfD05938",
+    "0xEB20B07a9abE765252E6b45e8292b12CB553CcA6",
+    "0xA4a45B550897dD5d8a44c68DBD245C5934EbAcd9",
+    "0x606b2689ba4a9f798f449fa6495186021486dd9f",
+    "0xd0b168fd6a4e220f1a8fa99de97f8f428587e178",
+    "0xe1cf0d5a56c993c3c2a0442dd645386aeff1fc9a",
+    "0xad15fec0026e28dfb10588fa35a383b07014e0c6",
   ];
-  let result = await IncentivesContract.getRewardsBalance(assets, user);
-  if (!result.isZero()) {
-    console.log(i, " <> ", user, result.toString());
-    unclaimedUsers.push(user);
-    unclaimedAmounts.push(result.toString());
+
+  let output = [];
+  let tempUsers = [];
+  let unclaimedUsers = [];
+  let unclaimedAmounts = [];
+  for (let i = 0; i < users.length; i++) {
+    tempUsers.push(users[i].id);
+    if (tempUsers.length > 500 || i+1 >= users.length ) {
+      let tempOutput = await getRewardsBalanceBatched(assets, tempUsers);
+      output = tempOutput.concat(output);
+      tempUsers = [];
+    }
   }
-  if (users.length - 1 === i) return unclaimedUsers;
-  //sleep(500)
-  await recursiveWeb3Query(users, i + 1);
+  let totalAmount = 0n;
+  for (let i = 0; i < users.length; i++) {
+    if (output[i]["result"] > 0n) {
+      unclaimedUsers.push(users[i].id.toString());
+      unclaimedAmounts.push(output[i]["result"].toString());
+      totalAmount += output[i]["result"];
+    }
+  }
+  console.log(totalAmount, unclaimedUsers.length);
+  return [unclaimedUsers, unclaimedAmounts];
 }
 
 try {

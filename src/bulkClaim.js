@@ -149,8 +149,9 @@ async function getUsersWithAsset(asset) {
   let relevantUsers = [];
   for (let i = 0; i < users.length; i++) {
     tempUsers.push(users[i].user);
-    if (tempUsers.length > 500 || i+1 >= users.length ) {
+    if (tempUsers.length > 100 || i+1 >= users.length ) {
       let tempOutput = await getUsersData(tempUsers, asset);
+      console.log(tempOutput)
       output = tempOutput.concat(output);
       tempUsers = [];
     }
@@ -168,4 +169,4 @@ async function getUsersWithAsset(asset) {
 }
 
 //loopUsersWithoutDebt();
-//loopAssetMulticall();
+loopAssetMulticall();
