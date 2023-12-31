@@ -1,15 +1,14 @@
-import ethers from "ethers";
 import { BaseIncentive } from "./abis/BaseIncentive.js";
 import { BulkClaimer } from "./abis/BulkClaimer.js";
 import { gnosis, gnosisChiado } from "viem/chains";
-import { createPublicClient, createWalletClient, custom, http } from "viem";
-import { mnemonicToAccount } from "viem/accounts";
+import { createPublicClient, createWalletClient, custom, http, getAddress } from "viem";
+import { mnemonicToAccount, privateKeyToAccount } from "viem/accounts";
 
 // config.js
 import dotenv from "dotenv";
 dotenv.config();
 
-const account = mnemonicToAccount(process.env.MNEMONIC);
+const account = (process.env.PRIVATE_KEY)? privateKeyToAccount(process.env.PRIVATE_KEY) : mnemonicToAccount(process.env.MNEMONIC);
 
 const transport = http(process.env.RPC_GNOSIS);
 
@@ -87,19 +86,19 @@ export async function getUsersData(usersAddress, assetAddress) {
   return output;
 }
 
-export async function bulkClaim(assetAddresses, userAddresses) {
-  console.log("claiming user: ", userAddresses);
+export async function bulkClaim(assetAddresses, usersAddresses) {
+  console.log("claiming user: ", usersAddresses);
   const hash = await wallet.writeContract({
     address: BulkClaimerAddress,
     abi: BulkClaimer,
     functionName: "bulkClaimRewardsOnBehalf",
-    args: [assetAddresses, userAddresses],
+    args: [assetAddresses, usersAddresses],
     //  maxPriorityFeePerGas:  priorityFee,
   });
   return await client.waitForTransactionReceipt(
     {
-      confirmations: 1,
+      confirmations: 3,
       hash: hash
-    }
+    }   
   )
 }
